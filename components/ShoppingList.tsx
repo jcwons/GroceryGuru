@@ -21,10 +21,10 @@ export default function ShoppingList({ grouped, allIngredients }: Props) {
   }
 
   // Filter out removed items from each group
-  const visibleGrouped = Object.fromEntries(
+  const visibleGrouped: GroupedIngredients = Object.fromEntries(
     Object.entries(grouped)
       .map(([store, items]) => [store, items.filter((i) => !removed.has(i.id))])
-      .filter(([, items]) => items.length > 0)
+      .filter(([, items]) => (items as Ingredient[]).length > 0)
   );
 
   const visibleIngredients = allIngredients.filter((i) => !removed.has(i.id));
